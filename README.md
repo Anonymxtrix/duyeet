@@ -2,8 +2,13 @@
 
 ## Getting Started
 
-### Frontend
+### Prerequisites
 
-1. Ensure that you are in the frontend directory (ie. `../duyeet/frontend`).
-2. Install the dependencies by running `yarn install`.
-3. To start the local development environment, run `yarn start`.
+1. Ensure that you have [docker](https://www.docker.com/) installed in your
+   development environment.
+
+### Instructions
+
+1. Ensure that you are in the root directory (ie. `../duyeet`).
+2. To start the local development environment, run `docker compose up`.
+3. You should be able to view the frontend in the browser at `localhost:8000`.
