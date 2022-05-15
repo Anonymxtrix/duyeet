@@ -18,4 +18,4 @@ COPY . .
 CMD ["yarn", "start"]
 
 # Expose the port from the container for development
-EXPOSE 3000
+EXPOSE 8000
