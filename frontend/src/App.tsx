@@ -1,3 +1,4 @@
+import AppContainer from "./components/AppContainer";
 import Login from "./views/Login";
 import React from "react";
 import Helmet from "react-helmet";
@@ -11,7 +12,9 @@ function App() {
         <title>Duyeet</title>
         <meta name="description" content="More powerful than your todo list." />
       </Helmet>
-      <Login />
+      <AppContainer>
+        <Login />
+      </AppContainer>
     </React.Fragment>
   );
 }

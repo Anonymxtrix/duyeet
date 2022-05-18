@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import Helmet from "react-helmet";
 
 interface Props {
   title: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const Page: React.FC<Props> = (props) => {
