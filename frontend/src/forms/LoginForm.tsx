@@ -1,53 +1,45 @@
-import { useFormik } from "formik";
-import * as yup from "yup";
+import useLogin from "../hooks/useLogin";
+import { getDefault, resolver } from "../models/forms/login";
+import { useForm, Controller } from "react-hook-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
-const loginFormSchema = yup.object({
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-});
-
 const LoginForm: React.FC = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-    },
-    validationSchema: loginFormSchema,
-    onSubmit: (values) => {
-      // TODO: Connect form to login API
-      return Promise.resolve();
-    },
+  const { login } = useLogin();
+  const { control, handleSubmit, formState } = useForm({
+    defaultValues: getDefault(),
+    resolver,
+    mode: "onBlur",
   });
 
+  const onSubmit = handleSubmit(login);
+
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      onReset={formik.handleReset}
-      onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-    >
+    <form onSubmit={onSubmit}>
       <Stack spacing={3}>
-        <TextField
-          color="primary"
-          variant="filled"
-          fullWidth
-          id="email"
+        <Controller
           name="email"
-          label="Email"
-          value={formik.values.email}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
+          control={control}
+          render={({ field, fieldState: { isDirty, error } }) => (
+            <TextField
+              color="primary"
+              variant="filled"
+              fullWidth
+              id="email"
+              label="Email"
+              {...field}
+              error={isDirty && Boolean(error)}
+              helperText={isDirty && error && error.message}
+            />
+          )}
         />
         <Button
           color="primary"
           variant="contained"
           fullWidth
           type="submit"
-          disabled={formik.isSubmitting}
+          disabled={formState.isSubmitting}
         >
           Submit
         </Button>
