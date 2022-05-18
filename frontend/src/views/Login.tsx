@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 const Login: React.FC = () => {
@@ -20,11 +21,13 @@ const Login: React.FC = () => {
         <Card>
           <CardHeader title="Login" />
           <CardContent>
-            <LoginForm />
-            <Typography variant="body1">
-              {/* TODO: Link sign up link to sign up route */}
-              Need an account? <Link href="#">Sign up</Link>
-            </Typography>
+            <Stack spacing={3}>
+              <LoginForm />
+              <Typography variant="body1">
+                {/* TODO: Link sign up link to sign up route */}
+                Need an account? <Link href="#">Sign up</Link>
+              </Typography>
+            </Stack>
           </CardContent>
         </Card>
       </Box>
