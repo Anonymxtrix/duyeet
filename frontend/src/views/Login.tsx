@@ -1,6 +1,6 @@
+import CenteringBox from "components/CenteringBox";
 import Page from "components/Page";
 import LoginForm from "forms/LoginForm";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
@@ -11,13 +11,7 @@ import Typography from "@mui/material/Typography";
 const Login: React.FC = () => {
   return (
     <Page title="Login">
-      <Box
-        display="flex"
-        flexGrow={1}
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <CenteringBox>
         <Card>
           <CardHeader title="Login" />
           <CardContent>
@@ -30,7 +24,7 @@ const Login: React.FC = () => {
             </Stack>
           </CardContent>
         </Card>
-      </Box>
+      </CenteringBox>
     </Page>
   );
 };
