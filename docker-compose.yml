@@ -1,5 +1,6 @@
 services:
   frontend:
+    container_name: duyeet-frontend
     build: frontend/
     volumes:
       - ./frontend/:/app
