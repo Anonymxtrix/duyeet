@@ -1,6 +1,7 @@
 import CenteringBox from "components/CenteringBox";
 import Page from "components/Page";
 import LoginForm from "forms/LoginForm";
+import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
@@ -19,7 +20,10 @@ const Login: React.FC = () => {
               <LoginForm />
               <Typography variant="body1">
                 {/* TODO: Link sign up link to sign up route */}
-                Need an account? <Link href="#">Sign up</Link>
+                Need an account?{" "}
+                <Link component={RouterLink} to="/signup">
+                  Sign up
+                </Link>
               </Typography>
             </Stack>
           </CardContent>
