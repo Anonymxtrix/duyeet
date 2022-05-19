@@ -16,7 +16,7 @@ const AppContainer: React.FC<Props> = (props) => {
       css={css`
         height: 100vh;
         display: flex;
-        flexdirection: column;
+        flex-direction: column;
       `}
     >
       {children}

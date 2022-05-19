@@ -1,5 +1,6 @@
 import AppContainer from "components/AppContainer";
 import Error404 from "views/Error404";
+import Home from "views/Home";
 import Login from "views/Login";
 import SignUp from "views/SignUp";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -23,8 +24,7 @@ function App() {
         <AppContainer>
           <BrowserRouter>
             <Routes>
-              {/* TODO: Add a landing page view */}
-              <Route index element={<p>Hello World!</p>} />
+              <Route index element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<Error404 />} />
