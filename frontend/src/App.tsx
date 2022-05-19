@@ -1,12 +1,11 @@
 import AppContainer from "components/AppContainer";
 import Login from "views/Login";
-import React from "react";
-import Helmet from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   return (
-    <React.Fragment>
+    <HelmetProvider>
       <CssBaseline />
       <Helmet>
         <title>Duyeet</title>
@@ -15,7 +14,7 @@ function App() {
       <AppContainer>
         <Login />
       </AppContainer>
-    </React.Fragment>
+    </HelmetProvider>
   );
 }
 
