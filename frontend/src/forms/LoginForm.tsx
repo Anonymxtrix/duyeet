@@ -1,5 +1,5 @@
-import useLogin from "../hooks/useLogin";
-import { getDefault, resolver } from "../models/forms/login";
+import useLogin from "hooks/useLogin";
+import { getDefault, resolver } from "models/forms/login";
 import { useForm, Controller } from "react-hook-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

@@ -1,5 +1,5 @@
-import AppContainer from "./components/AppContainer";
-import Login from "./views/Login";
+import AppContainer from "components/AppContainer";
+import Login from "views/Login";
 import React from "react";
 import Helmet from "react-helmet";
 import CssBaseline from "@mui/material/CssBaseline";

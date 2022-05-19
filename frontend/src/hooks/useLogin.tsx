@@ -1,4 +1,4 @@
-import { Values } from "../models/forms/login";
+import { Values } from "models/forms/login";
 
 const login = (values: Values): Promise<void> => {
   // TODO: Link this function to login API
