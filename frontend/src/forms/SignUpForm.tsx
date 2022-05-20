@@ -1,102 +1,76 @@
+import TextField from "forms/components/TextField";
 import useSignUp from "hooks/useSignUp";
 import { getDefault, resolver } from "models/forms/signUp";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
 const SignUpForm: React.FC = () => {
   const { signUp } = useSignUp();
-  const { control, handleSubmit, formState } = useForm({
+  const methods = useForm({
     defaultValues: getDefault(),
     resolver,
     mode: "onTouched",
   });
 
+  const {
+    formState: { isSubmitting },
+    handleSubmit,
+  } = methods;
   const onSubmit = handleSubmit(signUp);
 
   return (
-    <form onSubmit={onSubmit}>
-      <Stack spacing={2}>
-        <Controller
-          name="name"
-          control={control}
-          render={({ field, fieldState: { isDirty, error } }) => (
-            <TextField
-              color="primary"
-              variant="filled"
-              fullWidth
-              id="name"
-              label="Name"
-              type="text"
-              {...field}
-              error={isDirty && Boolean(error)}
-              helperText={isDirty && error && error.message}
-            />
-          )}
-        />
-        <Controller
-          name="email"
-          control={control}
-          render={({ field, fieldState: { isDirty, error } }) => (
-            <TextField
-              color="primary"
-              variant="filled"
-              fullWidth
-              id="email"
-              label="Email"
-              type="email"
-              {...field}
-              error={isDirty && Boolean(error)}
-              helperText={isDirty && error && error.message}
-            />
-          )}
-        />
-        <Controller
-          name="password"
-          control={control}
-          render={({ field, fieldState: { isDirty, error } }) => (
-            <TextField
-              color="primary"
-              variant="filled"
-              fullWidth
-              id="password"
-              label="Password"
-              type="password"
-              {...field}
-              error={isDirty && Boolean(error)}
-              helperText={isDirty && error && error.message}
-            />
-          )}
-        />
-        <Controller
-          name="confirmPassword"
-          control={control}
-          render={({ field, fieldState: { isDirty, error } }) => (
-            <TextField
-              color="primary"
-              variant="filled"
-              fullWidth
-              id="confirmPassword"
-              label="Confirm Password"
-              type="password"
-              {...field}
-              error={isDirty && Boolean(error)}
-              helperText={isDirty && error && error.message}
-            />
-          )}
-        />
-        <Button
-          color="primary"
-          variant="contained"
-          fullWidth
-          type="submit"
-          disabled={formState.isSubmitting}
-        >
-          Sign Up
-        </Button>
-      </Stack>
-    </form>
+    <FormProvider {...methods}>
+      <form onSubmit={onSubmit}>
+        <Stack spacing={2}>
+          <TextField
+            name="name"
+            color="primary"
+            variant="filled"
+            fullWidth
+            id="name"
+            label="Name"
+            type="text"
+          />
+          <TextField
+            name="email"
+            color="primary"
+            variant="filled"
+            fullWidth
+            id="email"
+            label="Email"
+            type="email"
+          />
+          <TextField
+            name="password"
+            color="primary"
+            variant="filled"
+            fullWidth
+            id="password"
+            label="Password"
+            type="password"
+          />
+          <TextField
+            name="confirmPassword"
+            color="primary"
+            variant="filled"
+            fullWidth
+            id="confirmPassword"
+            label="Confirm Password"
+            type="password"
+          />
+          <Button
+            color="primary"
+            variant="contained"
+            fullWidth
+            type="submit"
+            disabled={isSubmitting}
+          >
+            Sign Up
+          </Button>
+        </Stack>
+      </form>
+    </FormProvider>
   );
 };
 
