@@ -29,8 +29,12 @@ const Home: React.FC = () => {
       </AppBar>
       <Page>
         <CenteringBox>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={9}>
-            <Stack spacing={3} maxWidth={400}>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={9}
+            style={{ minWidth: "70%" }}
+          >
+            <Stack spacing={3} maxWidth={400} alignSelf="center">
               <Typography variant="body2">
                 <Typography variant="h4" fontWeight={500}>
                   JUST DUYEET.
@@ -39,7 +43,12 @@ const Home: React.FC = () => {
               </Typography>
               <SvgCompletedTasks style={{ maxWidth: "100%", height: "auto" }} />
             </Stack>
-            <Box display="flex" flexDirection="column" justifyContent="center">
+            <Box
+              display="flex"
+              flexGrow={1}
+              flexDirection="column"
+              justifyContent="center"
+            >
               <SignUpCard />
             </Box>
           </Stack>

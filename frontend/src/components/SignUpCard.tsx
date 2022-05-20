@@ -1,3 +1,4 @@
+import SignUpForm from "forms/SignUpForm";
 import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -12,7 +13,7 @@ const SignUpCard: React.FC = () => {
       <CardHeader title="Sign Up" />
       <CardContent>
         <Stack spacing={3}>
-          {/* TODO: Add sign up form */}
+          <SignUpForm />
           <Typography variant="body1">
             Have an account?{" "}
             <Link component={RouterLink} to="/login">

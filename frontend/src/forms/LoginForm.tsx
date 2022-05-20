@@ -41,7 +41,7 @@ const LoginForm: React.FC = () => {
           type="submit"
           disabled={formState.isSubmitting}
         >
-          Submit
+          Next
         </Button>
       </Stack>
     </form>
