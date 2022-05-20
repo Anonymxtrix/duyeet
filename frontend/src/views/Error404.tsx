@@ -8,12 +8,14 @@ const Error404: React.FC = () => {
   return (
     <Page title="Page Not Found">
       <CenteringBox>
-        <Stack spacing={3} display="flex" alignItems="center">
+        <Stack spacing={6} display="flex" alignItems="center">
           <SvgPageNotFound
             width="100%"
-            style={{ maxWidth: 500, maxHeight: 340 }}
+            style={{ maxWidth: 400, height: "auto" }}
           />
-          <Typography variant="h3">Page not found</Typography>
+          <Typography variant="h3" textAlign="center">
+            Page not found
+          </Typography>
           <Typography variant="body1" textAlign="center">
             The page you are looking for doesn't exist. <br />
             Go back to choose another direction.
