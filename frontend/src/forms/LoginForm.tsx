@@ -10,7 +10,7 @@ const LoginForm: React.FC = () => {
   const { control, handleSubmit, formState } = useForm({
     defaultValues: getDefault(),
     resolver,
-    mode: "onBlur",
+    mode: "onTouched",
   });
 
   const onSubmit = handleSubmit(login);
@@ -28,6 +28,24 @@ const LoginForm: React.FC = () => {
               fullWidth
               id="email"
               label="Email"
+              type="email"
+              {...field}
+              error={isDirty && Boolean(error)}
+              helperText={isDirty && error && error.message}
+            />
+          )}
+        />
+        <Controller
+          name="password"
+          control={control}
+          render={({ field, fieldState: { isDirty, error } }) => (
+            <TextField
+              color="primary"
+              variant="filled"
+              fullWidth
+              id="password"
+              label="Password"
+              type="password"
               {...field}
               error={isDirty && Boolean(error)}
               helperText={isDirty && error && error.message}
@@ -41,7 +59,7 @@ const LoginForm: React.FC = () => {
           type="submit"
           disabled={formState.isSubmitting}
         >
-          Next
+          Login
         </Button>
       </Stack>
     </form>

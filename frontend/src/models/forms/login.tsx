@@ -7,6 +7,11 @@ export const schema = yup.object({
     .default("")
     .email("Enter a valid email")
     .required("Email is required"),
+  password: yup
+    .string()
+    .default("")
+    .required("Password is required")
+    .min(8, "Password is at least 8 characters"),
 });
 
 export const resolver = yupResolver(schema);

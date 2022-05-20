@@ -10,7 +10,7 @@ const SignUpForm: React.FC = () => {
   const { control, handleSubmit, formState } = useForm({
     defaultValues: getDefault(),
     resolver,
-    mode: "onBlur",
+    mode: "onTouched",
   });
 
   const onSubmit = handleSubmit(signUp);
