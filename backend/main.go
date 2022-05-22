@@ -21,9 +21,7 @@ func main() {
 	// stopped.
 	r.Use(middleware.Timeout(60 * time.Second))
 
-	r.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Pong!"))
-	})
+	r.Use(middleware.Heartbeat("/heartbeat"))
 
 	r.Route("/auth", func(r chi.Router) {
 		r.Post("/login", login)
