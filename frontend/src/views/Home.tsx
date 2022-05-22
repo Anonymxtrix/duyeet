@@ -1,6 +1,7 @@
 import CenteringBox from "components/CenteringBox";
 import Page from "components/Page";
 import SignUpCard from "components/SignUpCard";
+import useSignUp from "hooks/useSignUp";
 import { ReactComponent as SvgCompletedTasks } from "images/undraw_completed_tasks.svg";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
@@ -11,6 +12,8 @@ import ToolBar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
 const Home: React.FC = () => {
+  const { signUp } = useSignUp();
+
   return (
     <>
       <AppBar position="static" color="inherit" elevation={0}>
@@ -35,11 +38,11 @@ const Home: React.FC = () => {
             style={{ minWidth: "70%" }}
           >
             <Stack spacing={3} maxWidth={400} alignSelf="center">
-              <Typography variant="body2">
-                <Typography variant="h4" fontWeight={500}>
-                  JUST DUYEET.
+              <Typography variant="h4" fontWeight={500}>
+                JUST DUYEET.
+                <Typography variant="body2">
+                  MORE POWERFUL THAN YOUR TODO LIST.
                 </Typography>
-                MORE POWERFUL THAN YOUR TODO LIST.
               </Typography>
               <SvgCompletedTasks style={{ maxWidth: "100%", height: "auto" }} />
             </Stack>
@@ -49,7 +52,7 @@ const Home: React.FC = () => {
               flexDirection="column"
               justifyContent="center"
             >
-              <SignUpCard />
+              <SignUpCard signUp={signUp} />
             </Box>
           </Stack>
         </CenteringBox>

@@ -1,6 +1,7 @@
 import CenteringBox from "components/CenteringBox";
 import Page from "components/Page";
 import LoginForm from "forms/LoginForm";
+import useLogin from "hooks/useLogin";
 import { Link as RouterLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -10,6 +11,8 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 const Login: React.FC = () => {
+  const { login } = useLogin();
+
   return (
     <Page title="Login">
       <CenteringBox>
@@ -17,7 +20,7 @@ const Login: React.FC = () => {
           <CardHeader title="Login" />
           <CardContent>
             <Stack spacing={3}>
-              <LoginForm />
+              <LoginForm login={login} />
               <Typography variant="body1">
                 {/* TODO: Link sign up link to sign up route */}
                 Need an account?{" "}

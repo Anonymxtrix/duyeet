@@ -1,12 +1,15 @@
 import TextField from "forms/components/TextField";
-import useSignUp from "hooks/useSignUp";
-import { getDefault, resolver } from "models/forms/signUp";
+import { getDefault, resolver, Values } from "models/forms/signUp";
 import { useForm, FormProvider } from "react-hook-form";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-const SignUpForm: React.FC = () => {
-  const { signUp } = useSignUp();
+interface Props {
+  signUp: (values: Values) => Promise<void>;
+}
+
+const SignUpForm: React.FC<Props> = (props) => {
+  const { signUp } = props;
   const methods = useForm({
     defaultValues: getDefault(),
     resolver,
