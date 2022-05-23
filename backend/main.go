@@ -1,7 +1,8 @@
 package main
 
 import (
-	"duyeet/backend/controllers/auth"
+	authControllerPkg "duyeet/backend/controllers/auth"
+	authServicePkg "duyeet/backend/services/auth"
 	"net/http"
 	"time"
 
@@ -24,9 +25,12 @@ func main() {
 
 	r.Use(middleware.Heartbeat("/heartbeat"))
 
+	authService := authServicePkg.New()
+	authController := authControllerPkg.New(authService)
+
 	r.Route("/auth", func(r chi.Router) {
-		r.Post("/login", auth.Login)
-		r.Post("/sign-up", auth.SignUp)
+		r.Post("/login", authController.Login)
+		r.Post("/sign-up", authController.SignUp)
 	})
 
 	http.ListenAndServe(":8001", r)

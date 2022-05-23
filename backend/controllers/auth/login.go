@@ -2,6 +2,6 @@ package auth
 
 import "net/http"
 
-func Login(w http.ResponseWriter, r *http.Request) {
+func (controller *Auth) Login(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello World!"))
 }

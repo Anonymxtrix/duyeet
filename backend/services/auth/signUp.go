@@ -1,5 +1,5 @@
 package auth
 
-func (*auth) SignUp(email string, password string) error {
+func (service *Auth) SignUp(email string, password string) error {
 	return nil
 }

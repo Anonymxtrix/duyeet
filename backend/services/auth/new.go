@@ -1,8 +1,8 @@
 package auth
 
-type auth struct {
+type Auth struct {
 }
 
-func New() auth {
-	return auth{}
+func New() *Auth {
+	return &Auth{}
 }
