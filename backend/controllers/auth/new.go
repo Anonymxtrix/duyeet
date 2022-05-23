@@ -1,11 +1,14 @@
 package auth
 
-import authService "duyeet/backend/services/auth"
-
-type Auth struct {
-	authService *authService.Auth
+type authService interface {
+	Login(email string, password string) (accessToken string, refreshToken string, err error)
+	SignUp(email string, password string) error
 }
 
-func New(authService *authService.Auth) *Auth {
+type Auth struct {
+	authService authService
+}
+
+func New(authService authService) *Auth {
 	return &Auth{authService}
 }
