@@ -3,7 +3,9 @@ package main
 import (
 	authControllerPkg "duyeet/backend/controllers/auth"
 	authServicePkg "duyeet/backend/services/auth"
+	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -33,5 +35,5 @@ func main() {
 		r.Post("/sign-up", authController.SignUp)
 	})
 
-	http.ListenAndServe(":8001", r)
+	http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), r)
 }
