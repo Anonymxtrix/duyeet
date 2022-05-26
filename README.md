@@ -31,5 +31,5 @@
   ```
 - To apply all up migrations,
   ```
-  migrate -source ./backend/schema -database postgres://localhost:5432/duyeet up
+  migrate -path ./backend/schema -database "postgres://localhost:5432/duyeet?user=postgres&password=postgres&database=duyeet&sslmode=disable" up
   ```
