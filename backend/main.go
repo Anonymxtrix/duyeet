@@ -30,9 +30,7 @@ func main() {
 
 	_, err := databasePkg.New()
 	if err != nil {
-		// panic("Cannot connect to database.")
-		os.Exit(1)
-		return
+		panic("Cannot connect to database.")
 	}
 
 	authService := authServicePkg.New()
