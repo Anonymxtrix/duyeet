@@ -17,6 +17,12 @@ services:
     build: backend/
     environment:
       - PORT=8001
+      - DATABASE=postgres
+      - DATABASE_HOST=database
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_USER_PASSWORD=postgres
+      - DATABASE_NAME=duyeet
     volumes:
       - ./backend/:/usr/src/app
     ports:
@@ -31,6 +37,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=duyeet
     volumes:
       - database:/var/lib/postgresql/data
     ports:
