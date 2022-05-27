@@ -31,7 +31,8 @@ func (controller *Auth) SignUp(w http.ResponseWriter, r *http.Request) {
 	}
 	err = controller.authService.SignUp(request.Email, request.Password)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Printf(err.Error())
+		utils.HandleHttpError(w, http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(http.StatusOK)

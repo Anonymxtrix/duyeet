@@ -5,6 +5,7 @@ import (
 	databasePkg "duyeet/backend/database"
 	authDatabasePkg "duyeet/backend/database/auth"
 	authServicePkg "duyeet/backend/services/auth"
+	validatorPkg "duyeet/backend/utils/validator"
 	"fmt"
 	"net/http"
 	"os"
@@ -29,13 +30,14 @@ func main() {
 
 	r.Use(middleware.Heartbeat("/heartbeat"))
 
+	validator := validatorPkg.New()
 	database, err := databasePkg.New()
 	if err != nil {
 		panic("Cannot connect to database.")
 	}
 
 	authDatabase := authDatabasePkg.New(database)
-	authService := authServicePkg.New(authDatabase)
+	authService := authServicePkg.New(authDatabase, validator)
 	authController := authControllerPkg.New(authService)
 
 	r.Route("/auth", func(r chi.Router) {
