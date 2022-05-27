@@ -2,13 +2,9 @@ package validator
 
 import (
 	"reflect"
-	"regexp"
+	"unicode"
 
 	validatorPkg "github.com/go-playground/validator/v10"
-)
-
-var (
-	passwordRegexp = regexp.MustCompile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
 )
 
 type validator struct {
@@ -20,7 +16,16 @@ func validatePassword(fl validatorPkg.FieldLevel) bool {
 	if kind != reflect.String {
 		return false
 	}
-	return passwordRegexp.MatchString(value.String())
+	hasLetter := false
+	hasNumber := false
+	for _, character := range value.String() {
+		hasLetter = hasLetter || unicode.IsLetter(character)
+		hasNumber = hasNumber || unicode.IsDigit(character)
+		if hasLetter && hasNumber {
+			return true
+		}
+	}
+	return false
 }
 
 func New() *validator {

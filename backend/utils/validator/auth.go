@@ -5,5 +5,5 @@ func (validation *validator) Email(field interface{}) error {
 }
 
 func (validation *validator) Password(field interface{}) error {
-	return validation.validator.Var(field, "required,password,max=255")
+	return validation.validator.Var(field, "required,password,min=8,max=255")
 }

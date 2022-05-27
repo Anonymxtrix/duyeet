@@ -1,7 +1,7 @@
 package auth
 
 func (auth *auth) Create(email string, hashedPassword string) error {
-	statement, err := auth.database.Preparex("INSERT INTO password_authentications (email, hashed_password) VALUES (?, ?)")
+	statement, err := auth.database.Preparex("INSERT INTO password_authentications (email, hashed_password) VALUES ($1, $2);")
 	if err != nil {
 		return err
 	}
