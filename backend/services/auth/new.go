@@ -1,8 +1,13 @@
 package auth
 
-type Auth struct {
+type authDatabase interface {
+	Create(email string, password string) error
 }
 
-func New() *Auth {
-	return &Auth{}
+type Auth struct {
+	authDatabase authDatabase
+}
+
+func New(database authDatabase) *Auth {
+	return &Auth{database}
 }
