@@ -5,10 +5,15 @@ type authService interface {
 	SignUp(email string, password string) error
 }
 
-type Auth struct {
-	authService authService
+type validator interface {
+	CheckStruct(s interface{}) error
 }
 
-func New(authService authService) *Auth {
-	return &Auth{authService}
+type auth struct {
+	authService authService
+	validator   validator
+}
+
+func New(authService authService, validator validator) *auth {
+	return &auth{authService, validator}
 }

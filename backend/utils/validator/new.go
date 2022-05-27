@@ -33,3 +33,7 @@ func New() *validator {
 	validate.RegisterValidation("password", validatePassword)
 	return &validator{validate}
 }
+
+func (validator *validator) CheckStruct(s interface{}) error {
+	return validator.validator.Struct(s)
+}

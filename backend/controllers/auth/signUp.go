@@ -7,11 +7,11 @@ import (
 )
 
 type signUpRequest struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	Email    string `json:"email" validate:"required,max=255,email"`
+	Password string `json:"password" validate:"required,min=8,max=255,password"`
 }
 
-func (controller *Auth) SignUp(w http.ResponseWriter, r *http.Request) {
+func (controller *auth) SignUp(w http.ResponseWriter, r *http.Request) {
 	isApplicationJson, err := utils.HasContentType(r, utils.ContentTypeApplicationJson)
 	if err != nil {
 		log.Printf(err.Error())
@@ -27,6 +27,12 @@ func (controller *Auth) SignUp(w http.ResponseWriter, r *http.Request) {
 	err = utils.DecodeJson(httpBodyReadCloser, &request)
 	if err != nil {
 		utils.HandleDecodeJsonError(w, err)
+		return
+	}
+	err = controller.validator.CheckStruct(request)
+	if err != nil {
+		log.Printf(err.Error())
+		utils.HandleHttpError(w, http.StatusBadRequest)
 		return
 	}
 	err = controller.authService.SignUp(request.Email, request.Password)

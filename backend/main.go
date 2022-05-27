@@ -37,8 +37,8 @@ func main() {
 	}
 
 	authDatabase := authDatabasePkg.New(database)
-	authService := authServicePkg.New(authDatabase, validator)
-	authController := authControllerPkg.New(authService)
+	authService := authServicePkg.New(authDatabase)
+	authController := authControllerPkg.New(authService, validator)
 
 	r.Route("/auth", func(r chi.Router) {
 		r.Post("/login", authController.Login)
